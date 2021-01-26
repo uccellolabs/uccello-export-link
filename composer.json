@@ -1,0 +1,39 @@
+{
+    "name": "uccello/url-export",
+    "description": "Gives a way to an Uccello project to export data using an URL.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan SARDO",
+            "email": "jonathan@uccellolabs.com"
+        }
+    ],
+    "require": {
+        "uccello/uccello": "^1.0|^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Uccello\\UrlExport\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Uccello\\UrlExport\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Uccello\\UrlExport\\Providers\\AppServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
