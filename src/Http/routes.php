@@ -13,7 +13,7 @@ Route::middleware('web')
     }
 
     // This route does not use the "auth" middleware. So it is accessible by everyone who know the link
-    Route::get($domainAndModuleParams.'/export/{uuid}', 'ExportController@process')
+    Route::get($domainAndModuleParams.'/export/{uuid}', 'ExportController@export')
         ->name('export');
 
     Route::post($domainAndModuleParams.'/export/generate-url', 'LinkController@generateExportUrl')
