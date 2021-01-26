@@ -1,11 +1,11 @@
 <?php
 
-namespace Uccello\UrlExport\Widgets;
+namespace Uccello\ExportLink\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
-use Uccello\UrlExport\Models\ExportUrl;
+use Uccello\ExportLink\Models\ExportLink;
 
-class UrlExportWidget extends AbstractWidget
+class ExportLinkWidget extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -22,7 +22,7 @@ class UrlExportWidget extends AbstractWidget
     {
         $userLinks = $this->getLinksCreatedByUser();
 
-        return view('url-export::widgets.url_export_widget', [
+        return view('export-link::widgets.export_with_link_widget', [
             'config' => $this->config,
             'domain' => $this->config['domain'],
             'module' => $this->config['module'],
@@ -33,7 +33,7 @@ class UrlExportWidget extends AbstractWidget
 
     protected function getLinksCreatedByUser()
     {
-        return ExportUrl::where('domain_id', $this->config['domain']->id)
+        return ExportLink::where('domain_id', $this->config['domain']->id)
             ->where('module_id', $this->config['module']->id)
             ->where('user_id', $this->config['user']->id)
             ->orderBy('created_at', 'desc')

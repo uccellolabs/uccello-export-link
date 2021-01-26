@@ -1,6 +1,6 @@
 <?php
 
-namespace Uccello\UrlExport\Http\Controllers;
+namespace Uccello\ExportLink\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Uccello\Core\Models\Domain;
 use Uccello\Core\Models\Module;
 use Uccello\Core\Support\Traits\IsExportable;
-use Uccello\UrlExport\Models\ExportUrl;
+use Uccello\ExportLink\Models\ExportLink;
 
 class ExportController extends Controller
 {
@@ -84,8 +84,8 @@ class ExportController extends Controller
      */
     protected function prepareExport()
     {
-        $this->retrieveExportUrlRecordFromRequest() // Retrieve Export Url record
-            ->retrieveUserWhoCreatedExportUrl() // Retrieve user
+        $this->retrieveExportLinkRecordFromRequest() // Retrieve Export Url record
+            ->retrieveUserWhoCreatedExportLink() // Retrieve user
             ->autoLoginIfModuleIsPrivateAndUserIsNotAuthenticated() // Auto login
             ->initializeExportManager() // Initialize Export Manager
             ->setExportOptions(); // Set export options
@@ -96,9 +96,9 @@ class ExportController extends Controller
      *
      * @return object|\Illuminate\Http\Exceptions
      */
-    protected function retrieveExportUrlRecordFromRequest()
+    protected function retrieveExportLinkRecordFromRequest()
     {
-        $record = ExportUrl::where('uuid', $this->request->uuid)
+        $record = ExportLink::where('uuid', $this->request->uuid)
             ->where('domain_id', $this->domain->id)
             ->where('module_id', $this->module->id)
             ->first();
@@ -117,7 +117,7 @@ class ExportController extends Controller
      *
      * @return object
      */
-    protected function retrieveUserWhoCreatedExportUrl()
+    protected function retrieveUserWhoCreatedExportLink()
     {
         $this->user = User::find($this->exportByUrlRecord->user_id);
 

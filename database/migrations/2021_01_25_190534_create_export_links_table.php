@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Uccello\Core\Database\Migrations\Migration;
 
-class CreateExportUrlsTable extends Migration
+class CreateExportLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateExportUrlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('export_urls', function (Blueprint $table) {
+        Schema::create('export_links', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('domain_id');
             $table->unsignedInteger('module_id');
@@ -44,6 +44,6 @@ class CreateExportUrlsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('export_urls');
+        Schema::dropIfExists('export_links');
     }
 }

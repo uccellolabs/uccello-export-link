@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Uccello\Core\Models\Capability;
 
-class AddUrlExportCapability extends Migration
+class AddExportWithLinkCapability extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddUrlExportCapability extends Migration
     public function up()
     {
         Capability::create([
-            'name' => 'url_export',
+            'name' => 'export_with_link',
             'data' => [
-                'package' => 'uccello/url-export',
+                'package' => 'uccello/export-link',
                 'for_crud' => true,
             ]
         ]);
@@ -28,6 +28,6 @@ class AddUrlExportCapability extends Migration
      */
     public function down()
     {
-        Capability::where('name', 'url_export')->delete();
+        Capability::where('name', 'export_with_link')->delete();
     }
 }

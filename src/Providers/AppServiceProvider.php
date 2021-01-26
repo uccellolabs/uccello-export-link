@@ -1,6 +1,6 @@
 <?php
 
-namespace Uccello\UrlExport\Providers;
+namespace Uccello\ExportLink\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Views
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'url-export');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'export-link');
 
         // Translations
-        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'url-export');
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'export-link');
 
         // Migrations
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
@@ -32,21 +32,21 @@ class AppServiceProvider extends ServiceProvider
 
         // Publish assets
         $this->publishes([
-            __DIR__ . '/../../public' => public_path('vendor/uccello/url-export'),
-        ], 'url-export-assets');
+            __DIR__ . '/../../public' => public_path('vendor/uccello/export-link'),
+        ], 'export-link-assets');
 
         // Config
         $this->publishes([
-            __DIR__ . '/../../config/url-export.php' => config_path('url-export.php'),
-        ], 'url-export-config');
+            __DIR__ . '/../../config/export-link.php' => config_path('export-link.php'),
+        ], 'export-link-config');
     }
 
     public function register()
     {
         // Config
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/url-export.php',
-            'url-export'
+            __DIR__ . '/../../config/export-link.php',
+            'export-link'
         );
     }
 }

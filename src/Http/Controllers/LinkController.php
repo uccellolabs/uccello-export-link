@@ -1,12 +1,12 @@
 <?php
 
-namespace Uccello\UrlExport\Http\Controllers;
+namespace Uccello\ExportLink\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Uccello\Core\Http\Controllers\Core\IndexController;
 use Uccello\Core\Models\Domain;
 use Uccello\Core\Models\Module;
-use Uccello\UrlExport\Models\ExportUrl;
+use Uccello\ExportLink\Models\ExportLink;
 
 class LinkController extends IndexController
 {
@@ -18,9 +18,9 @@ class LinkController extends IndexController
         // Checks if user can retrieve current module
         $this->middleware('uccello.permissions:retrieve');
 
-        // Checks if user has "url_export" capability if necessary
-        if (config('url-export.needs_url_export_capability') === true) {
-            $this->middleware('uccello.permissions:url_export');
+        // Checks if user has "export_with_link" capability if necessary
+        if (config('export-link.needs_export_with_link_capability') === true) {
+            $this->middleware('uccello.permissions:export_with_link');
         }
     }
 
@@ -33,7 +33,7 @@ class LinkController extends IndexController
      *
      * @return \Illuminate\Http\Response
      */
-    public function generateExportUrl(?Domain $domain, Module $module, Request $request)
+    public function generateExportLink(?Domain $domain, Module $module, Request $request)
     {
         $data = [
             'extension' => $request->extension,
@@ -54,18 +54,18 @@ class LinkController extends IndexController
             $data['order'] = $request->order;
         }
 
-        $exportUrlRecord = ExportUrl::create([
+        $exportLinkRecord = ExportLink::create([
             'domain_id' => $domain->id,
             'module_id' => $module->id,
             'user_id' => auth()->id(),
             'data' => $data
         ]);
 
-        $exportUrlRecord->html_content = view()->make('url-export::partials.link', [
-            'link' => $exportUrlRecord
+        $exportLinkRecord->html_content = view()->make('export-link::partials.link', [
+            'link' => $exportLinkRecord
         ])->render();
 
-        return $exportUrlRecord;
+        return $exportLinkRecord;
     }
 
     /**
@@ -77,9 +77,9 @@ class LinkController extends IndexController
      *
      * @return \Illuminate\Http\Response
      */
-    public function deleteExportUrl(?Domain $domain, Module $module, Request $request)
+    public function deleteExportLink(?Domain $domain, Module $module, Request $request)
     {
-        ExportUrl::where('domain_id', $domain->id)
+        ExportLink::where('domain_id', $domain->id)
             ->where('module_id', $module->id)
             ->where('user_id', auth()->id())
             ->where('uuid', $request->uuid)

@@ -1,5 +1,5 @@
-@if (!config('url-export.needs_url_export_capability') || auth()->user()->hasCapabilityOnModule('url-export', $domain, $module))
-    @widget(\Uccello\UrlExport\Widgets\UrlExportWidget::class, [
+@if (!config('export-link.needs_export_with_link_capability') || auth()->user()->hasCapabilityOnModule('export-link', $domain, $module))
+    @widget(\Uccello\ExportLink\Widgets\ExportLinkWidget::class, [
         'domain' => $domain,
         'module' => $module,
         'user' => auth()->user()
@@ -7,5 +7,5 @@
 @endif
 
 @section('extra-script')
-    {{ Html::script(mix('js/script.js', 'vendor/uccello/url-export')) }}
+    {{ Html::script(mix('js/script.js', 'vendor/uccello/export-link')) }}
 @append

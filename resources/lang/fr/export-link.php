@@ -2,7 +2,7 @@
 
 return [
     'button' => [
-        'generate_url' => 'Générer URL d\'export',
+        'generate_link' => 'Générer lien d\'export',
     ],
     'option' => [
         'columns' => 'Qlq colonnes',

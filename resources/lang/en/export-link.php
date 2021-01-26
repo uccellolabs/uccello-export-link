@@ -2,7 +2,7 @@
 
 return [
     'button' => [
-        'generate_url' => 'Generate URL for export',
+        'generate_link' => 'Generate link for export',
     ],
     'option' => [
         'columns' => 'Some columns',

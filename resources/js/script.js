@@ -1,6 +1,6 @@
 import {Datatable} from 'uccello-datatable';
 
-export class UrlExportManager
+export class ExportLinkManager
 {
     constructor() {
         this.initDatatable();
@@ -13,7 +13,7 @@ export class UrlExportManager
             this.initDeleteUrlButton($(el));
         });
 
-        this.initGenerateExportUrlClickListener();
+        this.initGenerateExportLinkClickListener();
     }
 
     /**
@@ -32,7 +32,7 @@ export class UrlExportManager
         $(element).on('click', event => {
             event.preventDefault();
 
-            let inputId = element.parents('.export-url:first').find('.export-url-value').attr('id');
+            let inputId = element.parents('.export-link:first').find('.export-link-value').attr('id');
             this.copyUrl(inputId);
         });
     }
@@ -50,30 +50,30 @@ export class UrlExportManager
             let url = element.attr('href');
             $.post(url, data).then(response => {
                 if (response.success) {
-                    element.parents('.export-url:first').remove();
+                    element.parents('.export-link:first').remove();
                 }
             })
         });
     }
 
-    initGenerateExportUrlClickListener() {
-        $('.generate-export-url').on('click', (event) => {
+    initGenerateExportLinkClickListener() {
+        $('.generate-export-link').on('click', (event) => {
             event.preventDefault();
 
             let endpointUrl = $(event.currentTarget).attr('href');
 
-            this.generateExportUrl(endpointUrl);
+            this.generateExportLink(endpointUrl);
         })
     }
 
-    generateExportUrl(endpointUrl) {
+    generateExportLink(endpointUrl) {
         let formData = this.getExportConfig();
 
         $.post(endpointUrl, formData).then(response => {
             let element = $(response.html_content);
 
             // Prepend the link
-            $('#exportModal #export-urls-list').prepend(element);
+            $('#exportModal #export-links-list').prepend(element);
 
             // Initialize copy url button
             this.initCopyUrlButton($('.copy-url', element));
@@ -159,4 +159,4 @@ export class UrlExportManager
       }
 }
 
-new UrlExportManager();
+new ExportLinkManager();

@@ -1,6 +1,6 @@
 {
-    "name": "uccello/url-export",
-    "description": "Gives a way to an Uccello project to export data using an URL.",
+    "name": "uccello/export-link",
+    "description": "Gives a way to an Uccello project to export data using a link.",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,22 +10,22 @@
         }
     ],
     "require": {
-        "uccello/uccello": "^1.0|^2.0"
+        "uccello/uccello": "2.*"
     },
     "autoload": {
         "psr-4": {
-            "Uccello\\UrlExport\\": "src/"
+            "Uccello\\ExportLink\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Uccello\\UrlExport\\Tests\\": "tests/"
+            "Uccello\\ExportLink\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Uccello\\UrlExport\\Providers\\AppServiceProvider"
+                "Uccello\\ExportLink\\Providers\\AppServiceProvider"
             ]
         }
     },

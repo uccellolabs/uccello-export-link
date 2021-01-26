@@ -1,6 +1,6 @@
 <?php
 
-namespace Uccello\UrlExport\Models;
+namespace Uccello\ExportLink\Models;
 
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -8,7 +8,7 @@ use Uccello\Core\Database\Eloquent\Model;
 use Uccello\Core\Models\Domain;
 use Uccello\Core\Models\Module;
 
-class ExportUrl extends Model
+class ExportLink extends Model
 {
     public static function boot()
     {

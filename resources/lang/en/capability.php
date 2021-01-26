@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'url_export' => 'Export by URL',
+    'export_with_link' => 'Export with link',
 ];

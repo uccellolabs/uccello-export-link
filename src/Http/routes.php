@@ -1,8 +1,8 @@
 <?php
 
 Route::middleware('web')
-->namespace('Uccello\UrlExport\Http\Controllers')
-->name('url-export.')
+->namespace('Uccello\ExportLink\Http\Controllers')
+->name('export-link.')
 ->group(function() {
 
     // This makes it possible to adapt the parameters according to the use or not of the multi domains
@@ -16,11 +16,11 @@ Route::middleware('web')
     Route::get($domainAndModuleParams.'/export/{uuid}', 'ExportController@export')
         ->name('export');
 
-    Route::post($domainAndModuleParams.'/export/generate-url', 'LinkController@generateExportUrl')
+    Route::post($domainAndModuleParams.'/export/generate-url', 'LinkController@generateExportLink')
         ->middleware('auth')
         ->name('generate');
 
-    Route::post($domainAndModuleParams.'/export/delete-url/{uuid}', 'LinkController@deleteExportUrl')
+    Route::post($domainAndModuleParams.'/export/delete-url/{uuid}', 'LinkController@deleteExportLink')
         ->middleware('auth')
         ->name('delete');
 });
