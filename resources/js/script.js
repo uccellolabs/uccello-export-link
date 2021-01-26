@@ -25,7 +25,8 @@ export class ExportLinkManager
         }
 
         this.datatable = new Datatable();
-        this.datatable.init($('table[data-filter-type="list"]'));
+        this.datatable.table = $('table[data-filter-type="list"]');
+        this.datatable.initColumns();
     }
 
     initCopyUrlButton(element) {
