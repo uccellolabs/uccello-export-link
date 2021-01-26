@@ -10,11 +10,10 @@
     </div>
     <div class="col s8 m9">
         @php($linkUrl = ucroute('export-link.export', $link->domain, $link->module, ['uuid' => $link->uuid]))
-        {{-- <a href="{{ $linkUrl }}" class="primary-text left" style="margin-top: 7px">{{ $linkUrl }}</a> --}}
         <input id="{{ $link->uuid }}" type="text" class="export-link-value" value="{{ $linkUrl }}">
     </div>
     <div class="col s4 m3">
-        <a href="{{ ucroute('export-link.delete', $link->domain, $link->module, ['uuid' => $link->uuid]) }}" class="btn-flat red-text right delete-url" data-tooltip="Delete URL" data-position="top"><i class="material-icons">delete</i></a>
-        <a href="#" class="btn-flat primary-text right copy-url" data-tooltip="Copy URL" data-position="top"><i class="material-icons">content_copy</i></a>
+        <a href="{{ ucroute('export-link.delete', $link->domain, $link->module, ['uuid' => $link->uuid]) }}" class="btn-flat red-text right delete-url" data-tooltip="@lang('export-link::export-link.button.delete_link')" data-position="top"><i class="material-icons">delete</i></a>
+        <a href="#" class="btn-flat primary-text right copy-url" data-tooltip="@lang('export-link::export-link.button.copy_link')" data-position="top"><i class="material-icons">content_copy</i></a>
     </div>
 </div>

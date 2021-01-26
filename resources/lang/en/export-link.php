@@ -3,6 +3,8 @@
 return [
     'button' => [
         'generate_link' => 'Generate link for export',
+        'copy_link' => 'Copy link',
+        'delete_link' => 'Delete link',
     ],
     'option' => [
         'columns' => 'Some columns',
