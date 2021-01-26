@@ -103,10 +103,11 @@ class ExportUrl extends Model
     {
         $conditions = collect();
 
-        // dd($this->conditions);
-
         if ($this->conditions && isset($this->conditions->search)) {
             foreach ((array) $this->conditions->search as $column => $value) {
+                if (is_array($value)) {
+                    $value = implode(', ', $value);
+                }
                 $conditions[] = uctrans('field.'.$column, $this->module).' : '.$value;
             }
         }
